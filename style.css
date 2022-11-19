@@ -1,5 +1,16 @@
-body {
+#container,
+.content,
+h1  {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+#container, 
+.content {
+    flex-wrap: wrap;
+    padding: 0;
+    margin:auto;
+    border: none;
+}
+
