@@ -1,12 +1,12 @@
 const container = document.querySelector('#container')
 
 const content = document.querySelector('.content');
-content.style.outline = '1px solid black';
-content.style.width = '768px'
-content.style.height = '768px';
-let box = (768/16).toString();
+//content.style.outline = '1px solid black';
+content.style.width = '720px'
+content.style.height = '720px';
+let box = (720/16).toString();
 
-//Create a 16X16 grid of divs
+//Create a 16x16 grid of divs
 for (i = 0 ; i < 16 ; i++) {
     for (j = 0 ; j < 16 ; j++) {
     const div = document.createElement('div');
@@ -19,14 +19,39 @@ for (i = 0 ; i < 16 ; i++) {
 }
 
 //Select all created divs and add mouse event listeners
-const divs = Array.from(document.querySelectorAll('.grid'));
+let divs = Array.from(document.querySelectorAll('.grid'));
 divs.forEach(grid => grid.addEventListener('mouseover', mouseOver));
-divs.forEach(grid => grid.addEventListener('mouseout', mouseOut));
 
 function mouseOver() {
     this.classList.add('hover');
 }
 
-function mouseOut() {
 
-}
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+    //Remove current grid and event listeners
+    divs.forEach(grid => grid.removeEventListener('mouseover', mouseOver));
+    divs.forEach(grid => content.removeChild(grid));
+    //Prompt user for new grid size 
+    let size = parseInt(prompt('Enter the number of squares, between 2-100, per side of the grid', '16'));
+    while (size < 2 || size > 100) {
+        size = parseInt(prompt('Please enter a number between 2-100', '16'));
+    }
+
+    let square = (720/size).toString();
+    //Create new grid from user input
+    for (i = 0 ; i < size ; i++) {
+        for (j = 0 ; j < size ; j++) {
+        const div = document.createElement('div');
+        div.className = 'grid';
+        div.style.outline = '1px solid black';
+        div.style.width = square + 'px';
+        div.style.height = square + 'px';
+        content.appendChild(div);
+        }
+    }
+    //Add event listeners to new grid
+    divs = Array.from(document.querySelectorAll('.grid'));
+    divs.forEach(grid => grid.addEventListener('mouseover', mouseOver));
+});
+
