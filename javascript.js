@@ -29,14 +29,15 @@ function mouseOver() {
 
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', () => {
+    //Prompt user for new grid size 
+    let size = parseInt(prompt('Enter the number of squares, between 2-100, per side of the grid', '16'));
+    while (size < 2 || size > 100 || isNaN(size)) {
+        size = parseInt(prompt('Please enter a number between 2-100', '16'));
+    }
+
     //Remove current grid and event listeners
     divs.forEach(grid => grid.removeEventListener('mouseover', mouseOver));
     divs.forEach(grid => content.removeChild(grid));
-    //Prompt user for new grid size 
-    let size = parseInt(prompt('Enter the number of squares, between 2-100, per side of the grid', '16'));
-    while (size < 2 || size > 100) {
-        size = parseInt(prompt('Please enter a number between 2-100', '16'));
-    }
 
     let square = (720/size).toString();
     //Create new grid from user input
