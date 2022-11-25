@@ -23,7 +23,8 @@ let divs = Array.from(document.querySelectorAll('.grid'));
 divs.forEach(grid => grid.addEventListener('mouseover', mouseOver));
 
 function mouseOver() {
-    this.classList.add('hover');
+    //change div color to random rgb value
+    this.style.backgroundColor = 'rgb(' + getRandomIntInclusive(1,255).toString() + "," + getRandomIntInclusive(1,255).toString() + "," + getRandomIntInclusive(1,255).toString() + ')';
 }
 
 
@@ -56,3 +57,8 @@ btn.addEventListener('click', () => {
     divs.forEach(grid => grid.addEventListener('mouseover', mouseOver));
 });
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+  }
