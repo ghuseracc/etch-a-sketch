@@ -14,6 +14,7 @@ for (i = 0 ; i < 16 ; i++) {
     div.style.outline = '1px solid black';
     div.style.width = box + 'px';
     div.style.height = box + 'px';
+    div.style.backgroundColor = 'white';
     content.appendChild(div);
     }
 }
@@ -24,7 +25,7 @@ divs.forEach(grid => grid.addEventListener('mouseover', mouseOver));
 
 function mouseOver() {
     //change div color to random rgb value
-    this.style.backgroundColor = 'rgb(' + getRandomIntInclusive(1,255).toString() + "," + getRandomIntInclusive(1,255).toString() + "," + getRandomIntInclusive(1,255).toString() + ')';
+    this.style.backgroundColor = 'rgb(' + getRandomIntInclusive(0,255).toString() + "," + getRandomIntInclusive(0,255).toString() + "," + getRandomIntInclusive(0,255).toString() + ')';
 }
 
 
@@ -49,6 +50,7 @@ btn.addEventListener('click', () => {
         div.style.outline = '1px solid black';
         div.style.width = square + 'px';
         div.style.height = square + 'px';
+        div.style.backgroundColor = 'white';
         content.appendChild(div);
         }
     }
